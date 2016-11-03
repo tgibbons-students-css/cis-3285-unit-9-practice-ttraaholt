@@ -105,9 +105,10 @@ namespace SingleResponsibilityPrinciple
 
         private void LogMessage(string message, params object[] args)
         {
-            using (StreamWriter logfile = File.AppendText("XMLFile1.xml"))
+            Console.WriteLine(message, args);
+            using (StreamWriter logfile = File.AppendText("log.xml"))
             {
-                logfile.WriteLine(" " + message + " ", args);
+                logfile.WriteLine("<log><type>INFO</type><message>4 trades processed</message></log>" + message + " ", args);
             }
         }
         
