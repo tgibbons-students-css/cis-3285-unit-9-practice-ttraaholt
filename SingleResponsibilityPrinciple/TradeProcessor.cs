@@ -67,7 +67,17 @@ namespace SingleResponsibilityPrinciple
                 LogMessage("WARN: Trade amount on line {0} not a valid integer: '{1}'", currentLine, fields[1]);
                 return false;
             }
+            if(tradeAmount < 1000){
 
+                LogMessage("WARN: Trade amount on line {0} not a valid integer: '{1}'", currentLine, fields[1]);
+                return false;
+            }
+            if (tradeAmount > 100000)
+            {
+
+                LogMessage("WARN: Trade amount on line {0} not a valid integer: '{1}'", currentLine, fields[1]);
+                return false;
+            }
             decimal tradePrice;
             if (!decimal.TryParse(fields[2], out tradePrice))
             {
@@ -77,6 +87,22 @@ namespace SingleResponsibilityPrinciple
             return true;
         }
 
+        /*private void ReadURLTradeData()
+        {
+            var tradeData = new List();
+            var client = new WebClient();
+            using (var stream = client.OpenRead(url))
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    tradeData.Add(line);
+                }
+            }
+            return tradeData;
+        }*/
+
         private void LogMessage(string message, params object[] args)
         {
             using (StreamWriter logfile = File.AppendText("XMLFile1.xml"))
@@ -84,6 +110,7 @@ namespace SingleResponsibilityPrinciple
                 logfile.WriteLine(" " + message + " ", args);
             }
         }
+        
 
         private TradeRecord MapTradeDataToTradeRecord(string[] fields)
         {
