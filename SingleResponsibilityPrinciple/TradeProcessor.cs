@@ -74,13 +74,15 @@ namespace SingleResponsibilityPrinciple
                 LogMessage("WARN: Trade price on line {0} not a valid decimal: '{1}'", currentLine, fields[2]);
                 return false;
             }
-
             return true;
         }
 
         private void LogMessage(string message, params object[] args)
         {
-            Console.WriteLine(message, args);
+            using (StreamWriter logfile = File.AppendText("XMLFile1.xml"))
+            {
+                logfile.WriteLine(" " + message + " ", args);
+            }
         }
 
         private TradeRecord MapTradeDataToTradeRecord(string[] fields)
