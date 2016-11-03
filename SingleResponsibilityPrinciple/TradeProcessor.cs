@@ -87,21 +87,6 @@ namespace SingleResponsibilityPrinciple
             return true;
         }
 
-        /*private void ReadURLTradeData()
-        {
-            var tradeData = new List();
-            var client = new WebClient();
-            using (var stream = client.OpenRead(url))
-            using (var reader = new StreamReader(stream))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    tradeData.Add(line);
-                }
-            }
-            return tradeData;
-        }*/
 
         private void LogMessage(string msgType, string message, params object[] args)
         {
@@ -168,6 +153,21 @@ namespace SingleResponsibilityPrinciple
             StoreTrades(trades);
         }
 
+       /*private void ReadURLTradeData()
+        {
+    var tradeData = new List();
+    var client = new WebClient();
+    using (var stream = client.OpenRead(url))
+    using (var reader = new StreamReader(stream))
+    {
+        string line;
+        while ((line = reader.ReadLine()) != null)
+        {
+            tradeData.Add(line);
+        }
+    }
+    return tradeData;
+}*/
 
     }
 }
